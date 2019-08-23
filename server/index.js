@@ -6,11 +6,13 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 const bodyParser = require('body-parser');
 require('./model/User');
+require('./model/Survey');
 require('./services/passport');
 const authRoutes = require('./routes/authRoutes');
 const billingRoutes = require('./routes/billingRoutes');
+const surveyRoutes = require('./routes/surveyRoutes');
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
 
 app.use(bodyParser());
 app.use(cookieSession({
@@ -23,6 +25,7 @@ app.use(passport.session());
 
 authRoutes(app);
 billingRoutes(app);
+surveyRoutes(app);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

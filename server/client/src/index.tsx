@@ -8,6 +8,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { Reducers } from './reducers/Index';
 import reduxThunk from 'redux-thunk';
+import axios from 'axios';
+(window as any).axios = axios;
 
 const Store = createStore(Reducers, {} as any, applyMiddleware(reduxThunk));
 
