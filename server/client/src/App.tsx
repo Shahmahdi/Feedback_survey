@@ -4,9 +4,8 @@ import Header from './component/Header';
 import { connect } from 'react-redux';
 import { FetchUser } from './actions/Index';
 import { Landing } from './pages/Landing';
-
-const SurverNew = () => <h2>SurverNew</h2>
-const Dashboard = () => <h2>Dashboard</h2>
+import { Dashboard } from './pages/Dashboard';
+import SurveyNew from './pages/SurveyNew';
 
 interface AppProps {
   FetchUser: () => void
@@ -25,8 +24,8 @@ class App extends Component<AppProps, any> {
           <div>
             <Header />
             <Route exact={true} path="/" component={Landing} />
-            <Route exact={true} path="/surveys" component={SurverNew} />
-            <Route exact={true} path="/dashboard" component={Dashboard} />
+            <Route exact={true} path="/surveys/new" component={SurveyNew} />
+            <Route exact={true} path="/surveys" component={Dashboard} />
           </div>
         </BrowserRouter>
       </div>
